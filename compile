@@ -12,7 +12,6 @@ download() {
 }
 
 
-echo "export PATH=${cache}/bin/elm-${ELM_VERSION}:$PATH" >> $buildpack/export
 PATH=${cache}/bin/elm-${ELM_VERSION}:$PATH
 
 ELM_VERSION=${ELM_VERSION:-0.18.0}
