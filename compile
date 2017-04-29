@@ -1,5 +1,16 @@
 cd $phoenix_dir
 
+download() {
+           url=$1
+           basename=$2
+           if test -f ${basename}
+           then
+            true
+           else
+            wget -nv -c ${url}/${basename}
+           fi
+}
+
 ELM_VERSION=${ELM_VERSION:-0.18.0}
 S3_URL=https://s3.amazonaws.com/heroku-buildpack-elm/assets
 download ${S3_URL}/elm/${ELM_VERSION} elm
