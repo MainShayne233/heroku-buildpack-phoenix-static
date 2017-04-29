@@ -1,3 +1,9 @@
 cd $phoenix_dir
 
+ELM_VERSION=${ELM_VERSION:-0.18.0}
+S3_URL=https://s3.amazonaws.com/heroku-buildpack-elm/assets
+download ${S3_URL}/elm/${ELM_VERSION} elm
+download ${S3_URL}/elm/${ELM_VERSION} elm-package
+download ${S3_URL}/elm/${ELM_VERSION} elm-make
+
 MIX_ENV=prod mix do assets.install, assets.digest
