@@ -1,24 +1,3 @@
 cd $phoenix_dir
 
-download() {
-           url=$1
-           basename=$2
-           if test -f ${basename}
-           then
-            true
-           else
-            wget -nv -c ${url}/${basename}
-           fi
-}
-
-
-PATH=${cache}/bin/elm-${ELM_VERSION}:$PATH
-
-ELM_VERSION=${ELM_VERSION:-0.18.0}
-S3_URL=https://s3.amazonaws.com/heroku-buildpack-elm/assets
-download ${S3_URL}/elm/${ELM_VERSION} elm
-download ${S3_URL}/elm/${ELM_VERSION} elm-package
-download ${S3_URL}/elm/${ELM_VERSION} elm-make
-chmod -R a+x ${cache}/bin
-
 MIX_ENV=prod mix do assets.install, assets.digest
